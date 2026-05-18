@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: '/api', // This will be configured for actual backend later
+  baseURL: (process.env.REACT_APP_API_URL || '/api'), // Configurable backend URL for production
   timeout: 10000,
 });
 
