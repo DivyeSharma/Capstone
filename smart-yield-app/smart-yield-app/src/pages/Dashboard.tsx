@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Sprout, TrendingUp, CloudRain, MessageSquare, BarChart3, Calendar } from 'lucide-react';
+import { Sprout, TrendingUp, CloudRain, MessageSquare, BarChart3, Calendar, Target, Bug } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { useLanguage } from '@/context/LanguageContext';
 import Navbar from '@/components/Navbar';
@@ -58,7 +58,23 @@ const Dashboard = () => {
       icon: BarChart3,
       to: '/analytics',
       emoji: '📊',
-      disabled: true,
+      disabled: false,
+    },
+    {
+      title: t('predictYield'),
+      description: t('predictYieldDesc'),
+      icon: Target,
+      to: '/yield-prediction',
+      emoji: '🎯',
+      disabled: false,
+    },
+    {
+      title: t('detectDisease'),
+      description: t('detectDiseaseDesc'),
+      icon: Bug,
+      to: '/disease-detection',
+      emoji: '🔍',
+      disabled: false,
     },
     {
       title: t('cropCalendar'),

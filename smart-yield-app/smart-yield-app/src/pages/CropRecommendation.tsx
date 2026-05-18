@@ -134,7 +134,7 @@ const CropRecommendation = () => {
 
       let temp = 28, humidity = 65, rainfall = 0;
 
-      if (geoRes.data?.length > 0) {
+      if (Array.isArray(geoRes.data) && geoRes.data.length > 0 && geoRes.data[0].lat) {
         const { lat, lon } = geoRes.data[0];
         // Step 2: Fetch live weather from Open-Meteo
         const wx = await axios.get(

@@ -15,10 +15,13 @@ import FertilizerGuide from "./pages/FertilizerGuide";
 import Weather from "./pages/Weather";
 import AskExpert from "./pages/AskExpert";
 import AdminLogin from "./pages/AdminLogin";
+import YieldPrediction from './pages/YieldPrediction';
+import DiseaseDetection from './pages/DiseaseDetection';
 import AdminPanel from "./pages/AdminPanel";
 import About from "./pages/About";
 import CropCalendar from "./pages/CropCalendar";
 import NotFound from "./pages/NotFound";
+import FarmAnalytics from "./pages/FarmAnalytics";
 
 const queryClient = new QueryClient();
 
@@ -52,9 +55,12 @@ const App = () => (
               <Route path="/weather" element={<Weather />} />
               <Route path="/ask-expert" element={<AskExpert />} />
               <Route path="/admin-login" element={<AdminLogin />} />
+              <Route path="/yield-prediction" element={<YieldPrediction />} />
+              <Route path="/disease-detection" element={<DiseaseDetection />} />
               <Route path="/admin" element={<AdminPanel />} />
               <Route path="/about" element={<About />} />
               <Route path="/calendar" element={<CropCalendar />} />
+              <Route path="/analytics" element={<FarmAnalytics />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

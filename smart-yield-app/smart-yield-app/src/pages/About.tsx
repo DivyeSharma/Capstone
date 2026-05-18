@@ -16,84 +16,7 @@ import {
 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-
-const stats = [
-  { value: '50,000+', label: 'Farmers Helped', icon: Users, emoji: '👨‍🌾' },
-  { value: '22+', label: 'States Covered', icon: Globe, emoji: '🗺️' },
-  { value: '35%', label: 'Avg. Yield Increase', icon: TrendingUp, emoji: '📈' },
-  { value: '98%', label: 'Satisfaction Rate', icon: Award, emoji: '⭐' },
-];
-
-const values = [
-  {
-    icon: Leaf,
-    title: 'Sustainability',
-    description:
-      'We champion eco-friendly farming practices that protect the environment while maximising productivity for future generations.',
-    emoji: '🌿',
-  },
-  {
-    icon: Lightbulb,
-    title: 'Innovation',
-    description:
-      'Leveraging AI, real-time data, and agricultural science to deliver cutting-edge insights directly to farmers.',
-    emoji: '💡',
-  },
-  {
-    icon: Heart,
-    title: 'Farmer-First',
-    description:
-      'Every feature we build is designed with the farmer in mind — accessible, simple, and truly impactful.',
-    emoji: '❤️',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Trust & Transparency',
-    description:
-      'We are committed to data privacy, honest recommendations, and building lasting trust with our farming community.',
-    emoji: '🔒',
-  },
-];
-
-const team = [
-  {
-    name: 'Dr. Ananya Sharma',
-    role: 'Chief Agricultural Scientist',
-    bio: 'PhD in Agronomy from IARI with 15+ years of field research across Maharashtra and Punjab.',
-    emoji: '👩‍🔬',
-    gradient: 'from-primary/20 to-accent',
-  },
-  {
-    name: 'Rohan Mehta',
-    role: 'Lead AI Engineer',
-    bio: 'IIT graduate specialising in machine learning models for precision agriculture and soil analysis.',
-    emoji: '👨‍💻',
-    gradient: 'from-secondary/20 to-orange-100',
-  },
-  {
-    name: 'Priya Kulkarni',
-    role: 'Head of Farmer Relations',
-    bio: 'Former agriculture extension officer with deep community roots across rural Maharashtra.',
-    emoji: '👩‍🌾',
-    gradient: 'from-accent to-primary/10',
-  },
-  {
-    name: 'Vikram Desai',
-    role: 'Product & UX Lead',
-    bio: "Passionate about building intuitive digital experiences for Bharat's next-gen farmers.",
-    emoji: '🎨',
-    gradient: 'from-orange-50 to-secondary/20',
-  },
-];
-
-const milestones = [
-  { year: '2020', event: 'Founded in Pune with a mission to empower Indian farmers through technology.' },
-  { year: '2021', event: 'Launched Crop Recommendation engine covering 50+ crop varieties.' },
-  { year: '2022', event: 'Partnered with ICAR and state agricultural universities for research.' },
-  { year: '2023', event: 'Reached 25,000 active farmers across 15 states.' },
-  { year: '2024', event: 'Introduced multilingual support and voice-based expert consultation.' },
-  { year: '2025', event: 'Expanded to 22 states; surpassed 50,000 registered farmers.' },
-];
+import { useLanguage } from '@/context/LanguageContext';
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -102,6 +25,82 @@ const fadeUp = {
 };
 
 const About = () => {
+  const { t } = useLanguage();
+
+  const stats = [
+    { value: '120+', label: t('statFarmersHelped'), icon: Users, emoji: '👨‍🌾' },
+    { value: '3', label: t('statStatesCovered'), icon: Globe, emoji: '🗺️' },
+    { value: '20%', label: t('statYieldIncrease'), icon: TrendingUp, emoji: '📈' },
+    { value: '92%', label: t('statSatisfaction'), icon: Award, emoji: '⭐' },
+  ];
+
+  const values = [
+    {
+      icon: Leaf,
+      title: t('valueSustainability'),
+      description: t('valueSustainabilityDesc'),
+      emoji: '🌿',
+    },
+    {
+      icon: Lightbulb,
+      title: t('valueInnovation'),
+      description: t('valueInnovationDesc'),
+      emoji: '💡',
+    },
+    {
+      icon: Heart,
+      title: t('valueFarmerFirst'),
+      description: t('valueFarmerFirstDesc'),
+      emoji: '❤️',
+    },
+    {
+      icon: ShieldCheck,
+      title: t('valueTrust'),
+      description: t('valueTrustDesc'),
+      emoji: '🔒',
+    },
+  ];
+
+  const team = [
+    {
+      name: t('member1Name'),
+      role: t('member1Role'),
+      bio: t('member1Bio'),
+      emoji: '🎨',
+      gradient: 'from-pink-100 to-purple-100',
+    },
+    {
+      name: t('member2Name'),
+      role: t('member2Role'),
+      bio: t('member2Bio'),
+      emoji: '👨‍💻',
+      gradient: 'from-primary/20 to-accent',
+    },
+    {
+      name: t('member3Name'),
+      role: t('member3Role'),
+      bio: t('member3Bio'),
+      emoji: '🛠️',
+      gradient: 'from-secondary/20 to-orange-100',
+    },
+    {
+      name: t('member4Name'),
+      role: t('member4Role'),
+      bio: t('member4Bio'),
+      emoji: '🤖',
+      gradient: 'from-green-100 to-teal-100',
+    },
+  ];
+
+  const milestones = [
+    { year: t('phase1Label'), event: t('phase1Event') },
+    { year: t('phase2Label'), event: t('phase2Event') },
+    { year: t('phase3Label'), event: t('phase3Event') },
+    { year: t('phase4Label'), event: t('phase4Event') },
+    { year: t('phase5Label'), event: t('phase5Event') },
+    { year: t('phase6Label'), event: t('phase6Event') },
+  ];
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -118,14 +117,13 @@ const About = () => {
           >
             <div className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-4 py-2 rounded-full text-sm font-medium mb-6">
               <Sprout className="h-4 w-4" />
-              Our Story
+              {t('aboutOurStory')}
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 gradient-text">
-              About Smart Crop Advisory 🌾
+              {t('aboutHeroTitle')}
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              Born out of a deep respect for India's farming heritage and a belief that technology
-              can transform lives — we exist to put the right information in every farmer's hands.
+              {t('aboutHeroSubtitle')}
             </p>
           </motion.div>
         </div>
@@ -138,15 +136,15 @@ const About = () => {
             {[
               {
                 icon: Target,
-                title: 'Our Mission',
+                title: t('aboutOurMission'),
                 emoji: '🎯',
-                text: 'To democratise agricultural knowledge by delivering personalised, data-driven insights to every farmer in India — regardless of their location, education, or resources.',
+                text: t('aboutMissionText'),
               },
               {
                 icon: Globe,
-                title: 'Our Vision',
+                title: t('aboutOurVision'),
                 emoji: '🌏',
-                text: 'A future where no Indian farmer struggles with crop loss due to lack of timely advice. We envision technology as the great equaliser in rural agriculture.',
+                text: t('aboutVisionText'),
               },
             ].map((item, i) => (
               <motion.div key={i} {...fadeUp} transition={{ delay: i * 0.15 }}>
@@ -176,7 +174,7 @@ const About = () => {
             {...fadeUp}
             className="text-3xl md:text-4xl font-bold text-center text-white mb-12"
           >
-            Our Impact in Numbers 📊
+            {t('aboutImpactTitle')}
           </motion.h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {stats.map((stat, i) => (
@@ -199,9 +197,9 @@ const About = () => {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <motion.div {...fadeUp} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">What We Stand For ✨</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('aboutValuesTitle')}</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Our core values guide every decision we make and every product we build.
+              {t('aboutValuesSubtitle')}
             </p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -227,9 +225,9 @@ const About = () => {
       <section className="py-20 bg-accent/30">
         <div className="container mx-auto px-4">
           <motion.div {...fadeUp} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Journey 🚀</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('aboutJourneyTitle')}</h2>
             <p className="text-lg text-muted-foreground">
-              From a small Pune startup to a nationwide agricultural platform.
+              {t('aboutJourneySubtitle')}
             </p>
           </motion.div>
           <div className="max-w-3xl mx-auto relative">
@@ -263,9 +261,9 @@ const About = () => {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <motion.div {...fadeUp} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet the Team 👥</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('aboutTeamTitle')}</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              A passionate group of agronomists, engineers, and community builders united by one goal.
+              {t('aboutTeamSubtitle')}
             </p>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
@@ -297,16 +295,16 @@ const About = () => {
             viewport={{ once: true }}
             className="max-w-2xl mx-auto text-center text-white"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Join Our Growing Community 🌱</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('aboutCtaTitle')}</h2>
             <p className="text-lg text-white/90 mb-8">
-              Be part of the agricultural revolution. Start for free and see results in your very first season.
+              {t('aboutCtaSubtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="xl" className="bg-white text-primary hover:bg-white/90 font-semibold">
-                <Link to="/signup">Get Started Free</Link>
+                <Link to="/signup">{t('getStartedFree')}</Link>
               </Button>
               <Button asChild variant="outline" size="xl" className="border-white text-white hover:bg-white/10">
-                <Link to="/crop-recommendation">Explore Services</Link>
+                <Link to="/crop-recommendation">{t('exploreServices')}</Link>
               </Button>
             </div>
           </motion.div>
