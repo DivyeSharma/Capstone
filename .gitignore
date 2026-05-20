@@ -5,3 +5,6 @@ dist
 build
 __pycache__
 *.pyc
+backend_check
+temp_frontend
+frontend_temp
