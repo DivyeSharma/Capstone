@@ -17,8 +17,8 @@ start "Smart Yield - React Frontend" cmd /k "cd frontend && npm run dev"
 echo.
 echo ==============================================================
 echo ✅ All services triggered successfully!
-echo 💻 Frontend will open at: http://localhost:8080
-echo 🔌 Backend is listening on: http://localhost:5001
+echo 💻 Frontend will open at: http://localhost:3000
+echo 🔌 Backend is listening on: http://localhost:8080
 echo 🤖 ML Microservice is running on: http://localhost:5000
 echo ==============================================================
 echo.
