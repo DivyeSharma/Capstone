@@ -2,7 +2,6 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import pickle
 import numpy as np
-import cv2
 import os
 import pandas as pd
 import json
@@ -101,9 +100,9 @@ def detect_disease():
             mime_type=file.mimetype or "image/jpeg"
         )
         
-        # Call Gemini 1.5 Flash Vision Model
+        # Call Gemini 2.5 Flash Vision Model
         response = client.models.generate_content(
-            model='gemini-1.5-flash',
+            model='gemini-2.5-flash',
             contents=[GEMINI_PROMPT, image_part]
         )
         

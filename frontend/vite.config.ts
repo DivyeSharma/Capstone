@@ -10,9 +10,15 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
     proxy: {
       '/api': {
+        target: 'http://localhost:5001',
+        changeOrigin: true,
+        secure: false,
+      },
+      '/ml-api': {
         target: 'http://localhost:5000',
         changeOrigin: true,
         secure: false,
+        rewrite: (path) => path.replace(/^\/ml-api/, ''),
       },
     },
   },

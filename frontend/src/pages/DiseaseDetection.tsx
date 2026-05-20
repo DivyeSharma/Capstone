@@ -72,7 +72,8 @@ const DiseaseDetection = () => {
       formData.append('image', selectedFile);
 
       // Call Python Microservice
-      const res = await axios.post('http://127.0.0.1:5000/detect_disease', formData, {
+      const mlBaseUrl = import.meta.env.VITE_ML_URL || '/ml-api';
+      const res = await axios.post(`${mlBaseUrl}/detect_disease`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
 
@@ -100,6 +101,53 @@ const DiseaseDetection = () => {
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
     }
+  };
+
+  const formatRecommendation = (text: string) => {
+    if (!text) return null;
+    return text.split('\n').map((line, index) => {
+      let currentLine = line.trim();
+      let isBullet = false;
+      
+      // Check if it's a bullet point
+      if (currentLine.startsWith('* ') || currentLine.startsWith('- ')) {
+        isBullet = true;
+        currentLine = currentLine.substring(2);
+      }
+      
+      // Parse markdown-style tags
+      const boldParts = currentLine.split(/(\*\*.*?\*\*)/g);
+      
+      const parsedParts = boldParts.flatMap((part, partIdx) => {
+        if (part.startsWith('**') && part.endsWith('**')) {
+          const boldText = part.slice(2, -2);
+          return [<strong key={`b-${partIdx}`} className="font-extrabold text-primary">{boldText}</strong>];
+        } else {
+          const italicParts = part.split(/(\*.*?\*)/g);
+          return italicParts.map((subPart, subIdx) => {
+            if (subPart.startsWith('*') && subPart.endsWith('*')) {
+              return <em key={`i-${partIdx}-${subIdx}`} className="italic text-foreground/80">{subPart.slice(1, -1)}</em>;
+            }
+            return subPart;
+          });
+        }
+      });
+
+      if (isBullet) {
+        return (
+          <div key={index} className="flex gap-2 pl-4 mb-2 last:mb-0">
+            <span className="text-primary font-bold">•</span>
+            <div className="flex-1">{parsedParts}</div>
+          </div>
+        );
+      }
+
+      return (
+        <p key={index} className="min-h-[1.5em] mb-2 last:mb-0">
+          {parsedParts}
+        </p>
+      );
+    });
   };
 
   return (
@@ -286,9 +334,9 @@ const DiseaseDetection = () => {
                             <Info className="w-5 h-5" /> 
                             {isHi ? 'उपचार की सिफारिश' : 'Prescription & Action Plan'}
                           </h4>
-                          <p className="text-foreground/90 leading-relaxed font-medium">
-                            {result.recommendation}
-                          </p>
+                          <div className="text-foreground/90 leading-relaxed font-medium">
+                            {formatRecommendation(result.recommendation)}
+                          </div>
                         </motion.div>
 
                       </CardContent>

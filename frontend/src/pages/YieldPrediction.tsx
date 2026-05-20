@@ -37,7 +37,8 @@ const YieldPrediction = () => {
     setLoading(true);
     try {
       // Connect to Python Flask ML Microservice
-      const res = await axios.post('http://127.0.0.1:5000/predict_yield', {
+      const mlBaseUrl = import.meta.env.VITE_ML_URL || '/ml-api';
+      const res = await axios.post(`${mlBaseUrl}/predict_yield`, {
         crop,
         temperature: parseFloat(temperature),
         rainfall: parseFloat(rainfall)

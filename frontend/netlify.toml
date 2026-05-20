@@ -1,6 +1,6 @@
 [build]
-  base = "smart-yield-app"
-  publish = "smart-yield-app/build"
+  base = "frontend"
+  publish = "dist"
   command = "npm install && npm run build"
 
 [functions]

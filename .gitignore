@@ -1,25 +1,7 @@
-# Node modules
-node_modules/
-**/node_modules/
-
-# Environment variables
+node_modules
+venv
 .env
-**/.env
-
-# Build output
-dist/
-build/
-**/dist/
-**/build/
-
-# Logs
-*.log
-npm-debug.log*
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Vite cache
-.vite/
-**/.vite/
+dist
+build
+__pycache__
+*.pyc
